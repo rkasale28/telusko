@@ -6,9 +6,14 @@
     <title>Document</title>
 </head>
 <body bgcolor="cyan">
-    {{dest1.name}}
-    {{dest1.id}}
-    {{dest1.dest}}
-    {{dest1.price}}
+    <table>
+    {% for dest in dests %}
+    <tr>
+    <td>{{dest.name}}</td>
+    <td>{{dest.price}}</td>
+    <td>{{dest.desc}}</td>
+</tr>
+    {%endfor%}
+</table>
 </body>
 </html>
