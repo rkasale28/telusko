@@ -1,11 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Customer Home</h1>
-</body>
-</html>
+{% extends 'header.html'%}
+{%block content%}
+<ul class="nav nav-pills nav-fill bg-light">
+    <li class="nav-item">
+        <a class="nav-link active" href="home">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="plants">Plants</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="seeds">Seeds</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="soilandfertilizers">Soil and Fertilizers</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="decor">Decor</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="accessories">Accessories</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="cart">Cart</a>
+    </li>
+
+</ul>
+
+<h1>Customer Home</h1>
+{% if user.is_authenticated %}
+    <h2>{{user.profile.user_type}}</h2>
+    {% endif %}
+{%endblock%}
