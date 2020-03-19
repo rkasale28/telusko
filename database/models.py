@@ -37,4 +37,9 @@ class ItemInOrder(models.Model):
     price=models.IntegerField(null=True)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
+class Item(models.Model):
+    name=models.CharField(max_length=100,null=True)
+    price=models.IntegerField(null=True)
+    image=models.ImageField(upload_to='pics')
+
 

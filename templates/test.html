@@ -7,12 +7,10 @@
 </head>
 <body>
     Hello<br><br>
-   {% for key_i,val_i in items.items %}
-   {% for j in val_i%}
-   <b>Name: </b> {{j.name}} <br>
-   <b>Price</b> {{j.price}} <br>
+   {% for i in items %}
+   Name: {{i.name}}<br>
+   Price: {{i.price}}<br>
+   Image: <img src="{{i.image.url}}" alt="Image"><br>
    {% endfor %}
-   {% endfor %}
-    Hi<br>
 </body>
 </html>
