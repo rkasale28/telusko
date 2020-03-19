@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Profile
+from .models import Profile,Customer,Order,ItemInOrder,Address
 from django.contrib.auth.models import User,auth
 from django.db import IntegrityError
 
@@ -24,6 +24,8 @@ def csubmit(request):
             user_info=Profile(user_type='Consumer')
             user_info.user=user
             user_info.save()
+            customer=Customer(user=user_info)
+            customer.save()
         return render(request,'chome.html')
     except IntegrityError as e:
         return HttpResponse('Username exists')
@@ -58,3 +60,15 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return render (request,"login.html")
+
+def operate(request):
+    user1=User.objects.get(pk=2)
+    prof=Profile.objects.get(user=user1)
+    cust=Customer.objects.get(user=prof)
+    order=list(Order.objects.filter(customer=cust))
+    items=dict()
+    for i in order:
+        if i not in items:
+            items[i]=list(ItemInOrder.objects.filter(order=i))
+    #newaddr=cust.address_set.create(room='201',building='Sumit Bhavan',road='Jeejeebhoy Lane',area='Lalbaug',city='Mumbai',pincode='400')
+    return render(request,'test.html',{'items':items,'order':order})
