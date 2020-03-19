@@ -42,4 +42,10 @@ class Item(models.Model):
     price=models.IntegerField(null=True)
     image=models.ImageField(upload_to='pics')
 
+class Publication(models.Model):
+    title = models.CharField(max_length=30)
 
+
+class Article(models.Model):
+    headline = models.CharField(max_length=100)
+    publications = models.ManyToManyField(Publication)

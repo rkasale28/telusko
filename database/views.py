@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Profile,Customer,Order,ItemInOrder,Address,Item
+from .models import Profile,Customer,Order,ItemInOrder,Address,Item,Article,Publication
 from django.contrib.auth.models import User,auth
 from django.db import IntegrityError
 
@@ -71,5 +71,7 @@ def operate(request):
     #     if i not in items:
     #         items[i]=list(ItemInOrder.objects.filter(order=i))
     # #newaddr=cust.address_set.create(room='201',building='Sumit Bhavan',road='Jeejeebhoy Lane',area='Lalbaug',city='Mumbai',pincode='400')
-    items=Item.objects.all()
-    return render(request,'test.html',{'items':items})
+    #a2.publications.add(p1, p2)
+    p=Publication.objects.get(pk=3)
+    xyz=p.article_set.all()
+    return render(request,'test.html',{'xyz':xyz})
