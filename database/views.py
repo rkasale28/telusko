@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Profile,Customer,Order,ItemInOrder,Address,Item,Article,Publication
 from django.contrib.auth.models import User,auth
 from django.db import IntegrityError
+from .forms import StudentForm
 
 # Create your views here.
 def csignup(request):
@@ -75,3 +76,15 @@ def operate(request):
     p=Publication.objects.get(pk=3)
     xyz=p.article_set.all()
     return render(request,'test.html',{'xyz':xyz})
+
+def index(request):
+    student=StudentForm()
+    return render(request,'index.html',{'form':student})
+
+def index_submit(request):
+    if request.method=='POST':
+        fname=request.POST["first_name"]
+        lname=request.POST["last_name"]
+        status=request.POST["status"]
+        return HttpResponse(fname+' '+lname+' '+status)
+

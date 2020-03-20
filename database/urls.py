@@ -11,5 +11,7 @@ urlpatterns=[
     path('login',views.login,name="login"),
     path('logout',views.logout,name="logout"),
     path('operate',views.operate,name="operate"),
+    path('index',views.index,name="index"),
+    path('index_submit',views.index_submit,name='index_submit')
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -49,3 +49,13 @@ class Publication(models.Model):
 class Article(models.Model):
     headline = models.CharField(max_length=100)
     publications = models.ManyToManyField(Publication)
+
+class Student(models.Model):
+    first_name=models.CharField(max_length=50,null=True)
+    last_name=models.CharField(max_length=50,null=True)
+    ORDER_STATUS_CHOICES=[
+        ('D','Delivered'),
+        ('S','Shipped'),
+        ('P','Placed')
+    ]
+    status=models.CharField(max_length=1,choices=ORDER_STATUS_CHOICES,default='P')
