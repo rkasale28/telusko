@@ -1,2 +1,0 @@
-# telusko
-Learning Django
